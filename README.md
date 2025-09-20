@@ -1,2 +1,304 @@
-# pacokam.github.io
-Personal website for Paco Kam, Clarinetist.
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Paco Kam - Clarinetist</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" integrity="sha512-iBBXm8fW90+nuLcSKlbmrPcLa0OT92xO1BIsZ+ywDWZCvqsWgccV3gFoRBv0z+8dLJgyAHIhR35VZc2oM/gI1w==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&family=Open+Sans:wght@300;400&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Open Sans', sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f9f9f9;
+            color: #333;
+            position: relative;
+            font-size: 16px; /* Base font size for better readability */
+        }
+        body::before {
+            content: "";
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="100" height="100" viewBox="0 0 100 100"><text x="10" y="50" font-size="40" fill="%23ddd">♫</text><text x="60" y="70" font-size="30" fill="%23eee">♪</text></svg>') repeat;
+            opacity: 0.1;
+            z-index: -1;
+        }
+        header {
+            background-color: #1a1a1a;
+            color: white;
+            padding: 60px 20px;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+        header::after {
+            content: "♪ ♫ ♬";
+            position: absolute;
+            bottom: 10px;
+            left: 50%;
+            transform: translateX(-50%);
+            font-size: 2em;
+            opacity: 0.3;
+        }
+        header h1 {
+            margin: 0;
+            font-family: 'Playfair Display', serif;
+            font-size: 3em;
+        }
+        header .music-icon {
+            font-size: 1.5em;
+            margin: 0 10px;
+            animation: pulse 2s infinite;
+        }
+        @keyframes pulse {
+            0% { transform: scale(1); }
+            50% { transform: scale(1.1); }
+            100% { transform: scale(1); }
+        }
+        nav {
+            background-color: #333;
+            padding: 15px;
+            text-align: center;
+        }
+        nav a {
+            color: white;
+            margin: 0 20px;
+            text-decoration: none;
+            font-weight: bold;
+            transition: color 0.3s;
+            display: inline-block; /* Better for touch targets */
+            padding: 10px; /* Larger tap areas for mobile */
+        }
+        nav a:hover {
+            color: #ffd700;
+        }
+        section {
+            padding: 30px;
+            margin: 30px auto;
+            max-width: 900px;
+            background-color: white;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+            border-radius: 12px;
+        }
+        h2 {
+            color: #1a1a1a;
+            border-bottom: 3px solid #ffd700;
+            padding-bottom: 10px;
+            font-family: 'Playfair Display', serif;
+        }
+        h2 i {
+            margin-right: 10px;
+            color: #ffd700;
+        }
+        ul {
+            list-style-type: none;
+            padding-left: 0;
+        }
+        ul li {
+            padding: 5px 0;
+            position: relative;
+            padding-left: 25px;
+        }
+        ul li::before {
+            content: "\f001";
+            font-family: "Font Awesome 5 Free";
+            position: absolute;
+            left: 0;
+            color: #ffd700;
+        }
+        .contact {
+            text-align: center;
+            margin-top: 20px;
+        }
+        .contact a {
+            color: #1a1a1a;
+            text-decoration: none;
+            font-weight: bold;
+        }
+        .contact a:hover {
+            color: #ffd700;
+        }
+        .gallery {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 15px;
+        }
+        .gallery img {
+            width: 100%;
+            height: auto; /* Maintain aspect ratio on mobile */
+            border-radius: 8px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+            transition: transform 0.3s;
+        }
+        .gallery img:hover {
+            transform: scale(1.05);
+        }
+        .profile-img {
+            max-width: 250px;
+            width: 100%; /* Fluid on mobile */
+            float: left;
+            margin-right: 30px;
+            border-radius: 50%;
+            box-shadow: 0 0 15px rgba(0,0,0,0.2);
+        }
+        .award-img {
+            max-width: 100%;
+            margin-top: 20px;
+            border-radius: 8px;
+        }
+        footer {
+            background-color: #1a1a1a;
+            color: white;
+            text-align: center;
+            padding: 15px;
+            width: 100%;
+        }
+        @media (max-width: 768px) {
+            header h1 {
+                font-size: 2em;
+            }
+            header p {
+                font-size: 1em;
+            }
+            nav {
+                padding: 10px;
+            }
+            nav a {
+                margin: 0 10px;
+                font-size: 0.9em;
+            }
+            section {
+                padding: 20px;
+                margin: 20px;
+            }
+            .profile-img {
+                float: none;
+                margin: 0 auto 20px;
+                display: block;
+            }
+            .gallery {
+                grid-template-columns: 1fr; /* Stack images on small screens */
+            }
+            body {
+                font-size: 14px; /* Smaller base font for mobile */
+            }
+        }
+        @media (max-width: 480px) {
+            header {
+                padding: 40px 10px;
+            }
+            nav a {
+                display: block; /* Stack nav links vertically for very small screens */
+                margin: 10px 0;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <h1><i class="fas fa-music music-icon"></i> Paco Kam - Clarinetist <i class="fas fa-music music-icon"></i></h1>
+        <p>Professional Clarinet Performer and Instructor – Surpassing Expectations in Every Note</p>
+    </header>
+
+    <nav>
+        <a href="#about">About</a>
+        <a href="#qualifications">Qualifications</a>
+        <a href="#awards">Awards</a>
+        <a href="#experience">Experience</a>
+        <a href="#skills">Skills</a>
+        <a href="#performances">Performances</a>
+        <a href="#gallery">Gallery</a>
+        <a href="#contact">Contact</a>
+    </nav>
+
+    <section id="about">
+        <h2><i class="fas fa-user"></i> About Me</h2>
+        <img src="images/solo_photo.jpg" alt="Paco Kam holding clarinet" class="profile-img">
+        <p>Paco Kam is a dedicated clarinetist with extensive experience in performance, teaching, and orchestral work. Based in Hong Kong and currently studying in Sydney, Paco specializes in classical and jazz clarinet repertoire, delivering performances that captivate audiences and set him apart in the world of music.</p>
+    </section>
+
+    <section id="qualifications">
+        <h2><i class="fas fa-graduation-cap"></i> Qualifications</h2>
+        <ul>
+            <li>Sydney Conservatorium of Music, Bachelor of Music Performance (clarinet)</li>
+            <li>Trinity College of London (ATCL)</li>
+        </ul>
+    </section>
+
+    <section id="awards">
+        <h2><i class="fas fa-trophy"></i> Major Awards and Honors</h2>
+        <ul>
+            <li>Hong Kong Youth Barclampory Music Festival - 1st Runner-Up</li>
+            <li>2023 Guangdong-HongKong-Macao Greater Bay Area Young Artist Music Week - Silver Prize</li>
+        </ul>
+        <img src="images/trophies.jpg" alt="Awards trophies from 2015" class="award-img">
+    </section>
+
+    <section id="experience">
+        <h2><i class="fas fa-music"></i> Performance Experience</h2>
+        <ul>
+            <li>Hong Kong Youth Orchestra - Principal Clarinet</li>
+            <li>Asian Chamber Orchestra (2017 - Present) - Principal Clarinet</li>
+            <li>Victoria Philharmonic Orchestra - Principal Clarinet</li>
+            <li>Hong Kong Young Musicians Wind Orchestra - 1st Clarinet</li>
+            <li>Quartet Vocalise - Principal Clarinet</li>
+            <li>Sydney Conservatorium of Music Wind Symphony Orchestra (2022) - 2nd Clarinet</li>
+            <li>Clarinet Choir (2019) - Member</li>
+            <li>Solo Recitals: Sydney Conservatorium of Music Recital Hall, Sept 2019</li>
+        </ul>
+        <h3>Teaching Experience</h3>
+        <p>Private Clarinet Instructor (2017 - Present): Instructor for over 20 students ages 5 to 60, focusing on fundamentals, technique, and musical expression across varied styles and skill levels.</p>
+    </section>
+
+    <section id="skills">
+        <h2><i class="fas fa-tools"></i> Skills</h2>
+        <ul>
+            <li>Clarinet repertoire ranging from classical to jazz</li>
+            <li>Proficient in Bb, A, Bass, Alto, Eb clarinets</li>
+            <li>Experience performing in orchestras, recitals, and chamber groups</li>
+        </ul>
+    </section>
+
+    <section id="performances">
+        <h2><i class="fas fa-play-circle"></i> Clarinet Recital for Reference</h2>
+        <ul>
+            <li>Clarinet Concerto No.1 in F minor, Op.73 (Carl Maria von Weber)</li>
+            <li>Weber Concerto No.1 First Movement - <a href="https://www.youtube.com/watch?v=RISvX-3_yqw" target="_blank">Watch on YouTube</a></li>
+            <li>Hong Kong Youth Orchestra Performance</li>
+            <li>王西麟 · 火把節，選自《雲南音詩》 - <a href="https://www.youtube.com/watch?v=Ufnh4h1zZS4" target="_blank">Watch on YouTube</a></li>
+        </ul>
+    </section>
+
+    <section id="gallery">
+        <h2><i class="fas fa-images"></i> Gallery</h2>
+        <div class="gallery">
+            <img src="images/group_photo1.jpg" alt="Group photo of clarinet ensemble on red carpet">
+            <img src="images/award_photo.jpg" alt="Photo with performance companion holding clarinet and book">
+            <img src="images/group_photo2.jpg" alt="Group photo of clarinet ensemble on gray carpet">
+            <img src="images/new_photo1.jpg" alt="Selfie of Paco Kam and a colleague holding a clarinet">
+            <img src="images/new_photo2.jpg" alt="Group selfie of three clarinetists making funny faces">
+        </div>
+        <p>Note: Replace the src attributes with the actual paths to your uploaded images when hosting the website.</p>
+    </section>
+
+    <section id="contact">
+        <h2><i class="fas fa-envelope"></i> Contact</h2>
+        <div class="contact">
+            <p>Phone: +852 51174912</p>
+            <p>Email: <a href="mailto:pacokam94@gmail.com">pacokam94@gmail.com</a></p>
+            <p>Instagram: <a href="https://instagram.com/pacokam_pk" target="_blank">pacokam_pk</a></p>
+            <p>Facebook: <a href="https://facebook.com/Paco Chun Shing Kam" target="_blank">Paco Chun Shing Kam</a></p>
+        </div>
+    </section>
+
+    <footer>
+        <p>&copy; 2025 Paco Kam. All rights reserved.</p>
+    </footer>
+
+</body>
+</html>
